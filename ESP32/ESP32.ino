@@ -19,7 +19,7 @@ canmotorlib motor(1, "AK80_6_V1");
 float *motorData;
 const float kp = 18.5;
 const float kd = 0.5;
-float torueLimit = 0.4;
+float torueLimit = 0.7;
 const int IgnoreTorque = 0;
 int countIgnoreTorque = 0;
 
@@ -154,6 +154,7 @@ void _calibrationTool() {
       closePosition += motor.radians_to_degrees(motorData[0]);
       calibration = false;
       savePosition = true;
+      targetPosition = openPosition;
       motor.setCurrentStep(0);
       motor.setVelocity(4.0);
     }
